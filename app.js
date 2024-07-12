@@ -83,4 +83,5 @@ const quiz = [
      moveIndex++;
     }
     
+    //変更状態にするため追記
     
