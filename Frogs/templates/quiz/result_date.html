@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}<link href="{% static 'css/result.css' %}" rel="stylesheet" >{% endblock %}
+{% block title %}結果発表{% endblock %}
+{% block content %}
+<div class="top">
+  <div class="top-wrapper">
+    <div class="result-container">
+        <div class="result">
+            <h3>結果発表</h3>
+            {%if percent == 1%}
+            <h4 class="char-h4">&emsp;&emsp;&emsp;&emsp;蛙化度:<span class="char-1">&emsp;0&emsp;</span>%</h4>
+            {% else %}
+            <h4 class="char-h4">&emsp;&emsp;&emsp;&emsp;蛙化度:<span class="char-1">&emsp;{{percent}}&emsp;</span>%</h4>
+            {%endif%}
+            {% if percent >= 90  %}
+            <h4>
+              カエルになっちゃう！？
+              <img src="../../static/images/Level3.png">
+            </h4>
+            {% elif percent >= 60 %}
+            <h4>
+              まあまあだね
+              <img src="../../static/images/Level2.png">
+            </h4>
+            {% elif percent >= 40 %}
+            <h4>
+              よくやった
+              <img src="../../static/images/Level1.png">
+            </h4>
+            {% else %}
+            <h4>
+              すばらしい！！
+              <img src="../../static/images/Level0.png">
+            </h4>
+            {% endif %}
+            {% for point in situation2_list %}
+            <div class="card-text">
+              第{{forloop.counter}}問目: {{point}}
+            </div>
+            {%endfor%} 
+        </div>
+
+        <div class="quiz-container">
+            <h3>解説</h3>
+            <div class="quiz-item">
+                <div class="quiz-header">
+                    <span class="question-number">１問目</span>
+                    <button class="quiz-toggle-button">解説を表示 ⬇️</button>
+                </div>
+                <div class="quiz-content">
+                    <div class="great"><span>Great&emsp;:<span  class="char-10">車道側を歩く</span></span></div>
+                    <p><span>Good&emsp;:<span class="char-10">列で歩く</span></p>
+                    <p><span>Frog&emsp;:<span class="char-10">めっちゃ早歩き</span></p>
+                    <p><spna>Superfrog&emsp;:<span class="char-10">車道の真ん中を歩く</span></p>
+                    <div class="explain">
+                        <p><spna>全体の解説</spna></p>
+                        <p>男性が車道側を歩くことは、多くの人々に好意的に受け取られます。
+                            しかし、歩道が狭い場合や交通量が多い場合などは、1列で歩くことの方が正解の場合があります。
+                            <br>「Flog」回答は、相手を思いやる気持ちに欠けていると取られるので、避けるようにしましょう。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="quiz-item">
+                <div class="quiz-header">
+                    <span class="question-number">２問目</span>
+                    <button class="quiz-toggle-button">解説を表示 ⬇️</button>
+                </div>
+                <div class="quiz-content">
+                    <div class="great"><span>Great&emsp;:<span class="char-10">相手のことを引き出す</span></span></div>
+                    <p><span>Good&emsp;:<span class="char-10">話しを遮る</span></p>
+                    <p><span>Frog&emsp;:<span class="char-10">一方的に話す</span></p>
+                    <p><spna>Superfrog&emsp;:<span class="char-10">悪口ばっかり</span></p>
+                    <div class="explain">
+                        <p><spna>全体の解説</spna></p>
+                        <p>デート中は、ポジティブな話題や共通の趣味、楽しい思い出などを話すように心がけると良いでしょう。
+                            また、相手の反応を見ながら適度に質問を挟み、相手にも話す機会を与えるようにしましょう。
+                            <br>一方的に話すのは、相手を疲れさせてしまう場合があるので、避けるようにしましょう。
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="quiz-item">
+                <div class="quiz-header">
+                    <span class="question-number">３問目</span>
+                    <button class="quiz-toggle-button">解説を表示 ⬇️</button>
+                </div>
+                <div class="quiz-content">
+                    <div class="great"><span>Great&emsp;:<span class="char-11">会話を楽しみながら食事をする</span></span></div>
+                    <p><span>Good&emsp;:<span class="char-11">肘をつきながら食べる</span></p>
+                    <p><span>Frog&emsp;:<span class="char-11">口に入れたまま話す</span></p>
+                    <p><span>Superfrog&emsp;:<span class="char-11">ASMRみたいに食べる</span></p>
+                    <div class="explain">
+                        <p><spna>全体の解説</spna></p>
+                        <p>話題は軽めで、共通の趣味や最近の出来事などが良いでしょう。
+                            また、食事の間には適度なペースで食べ物を口に運び、相手の話に耳を傾けることが大切です。
+                            <br>肘を突いたり、口に入れたまま話すのは、相手に不快感を与えてしまうことがあるので気を付けましょう。
+                            <br>ASMRみたいになる人は、あごの力が弱い可能性があります。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="quiz-item">
+                <div class="quiz-header">
+                    <span class="question-number">４問目</span>
+                    <button class="quiz-toggle-button">解説を表示 ⬇️</button>
+                </div>
+                <div class="quiz-content">
+                    <div class="great"><span>Great&emsp;:<span class="char-11">手を洗い清潔なハンカチで拭く</span></span></div>
+                    <p><span>Good&emsp;:<span class="char-11">自然乾燥</span></p>
+                    <p><span>Frog&emsp;:<span class="char-11">服で拭く</span></p>
+                    <p><span>Superfrog&emsp;:<span class="char-11">手を洗わない</span></p>
+                    <div class="explain">
+                        <p><spna>全体の解説</spna></p>
+                        <p>手を洗い、清潔なハンカチで拭くことを心がけることで、衛生的であり、相手に対して良い印象を与え、快適なデートを続けることができます。
+                            <br>自然乾燥や服で拭く行為は、清潔感が無いうえに、菌の繁殖につながるのでおすすめできません。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="quiz-item">
+                <div class="quiz-header">
+                    <span class="question-number">５問目</span>
+                    <button class="quiz-toggle-button">解説を表示 ⬇️</button>
+                </div>
+                <div class="quiz-content">
+                    <div class="great"><span>Great&emsp;:<span class="char-11">制汗剤などで臭くない</span></span></div>
+                    <p><span>Good&emsp;:<span class="char-11">爪長めで強そう</span></p>
+                    <p><span>Frog&emsp;:<span class="char-11">髪はボサボサで自然体</span></p>
+                    <p><span>Superfrog&emsp;:<span class="char-11">無精髭でワイルドに</span></p>
+                    <div class="explain">
+                        <p><spna>全体の解説</p>
+                        <p>香りを整えることはマナーの一部ですが、強すぎる香りには注意が必要であるため適度な香りの香水やボディスプレーを使用しましょう。
+                            <br>爪などの細かい部分の身だしなみを気を付けることで、周りのことを気遣うことができるようにもなるでしょう。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <div class="btn">
+            <a href="{% url 'welcome:welcome'%}" style="text-decoration: none;">ホーム画面に戻る</a>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+  <script src="{% static 'javascripts/jquery.min.js' %}"></script>
+  <script src="{% static 'javascripts/result.js' %}"></script>
+{% endblock %}

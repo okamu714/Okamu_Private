@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}<link href="{% static 'css/result.css' %}" rel="stylesheet" >{% endblock %}
+{% block title %}結果発表{% endblock %}
+{% block content %}
+<div class="top">
+  <div class="top-wrapper">
+    <div class="result-container">
+        <div class="result">
+            <h3>結果発表</h3>
+            {%if percent == 1%}
+            <h4 class="char-h4">&emsp;&emsp;&emsp;&emsp;蛙化度:<span class="char-1">&emsp;0&emsp;</span>%</h4>
+            {% else %}
+            <h4 class="char-h4">&emsp;&emsp;&emsp;&emsp;蛙化度:<span class="char-1">&emsp;{{percent}}&emsp;</span>%</h4>
+            {%endif%}
+            {% if percent >= 90  %}
+            <h4>
+              カエルになっちゃう！？
+              <img src="../../static/images/Level3.png">
+            </h4>
+            {% elif percent >= 60 %}
+            <h4>
+              まあまあだね
+              <img src="../../static/images/Level2.png">
+            </h4>
+            {% elif percent >= 40 %}
+            <h4>
+              よくやった
+              <img src="../../static/images/Level1.png">
+            </h4>
+            {% else %}
+            <h4>
+              すばらしい！！
+              <img src="../../static/images/Level0.png">
+            </h4>
+            {% endif %}
+            {% for point in situation3_list %}
+            <div class="card-text">
+              第{{forloop.counter}}問目: {{point}}
+            </div>
+            {%endfor%} 
+        </div>
+
+        <div class="quiz-container">
+            <h3>解説</h3>
+            <div class="quiz-item">
+                <div class="quiz-header">
+                    <span class="question-number">１問目</span>
+                    <button class="quiz-toggle-button">解説を表示 ⬇️</button>
+                </div>
+                <div class="quiz-content">
+                  <div class="great"><span>Great&emsp;:<span class="char-11">お台場周辺からの砂浜</span></span></div>
+                  <p><span>Good&emsp;:<span class="char-11">超高級レストラン</span></p>
+                  <p><span>Frog&emsp;:<span class="char-11">大衆居酒屋(うるさめ)</span></p>
+                  <p><span>Superfrog&emsp;:<span class="char-11">心霊スポット</span></p>
+                  <div class="explain">
+                      <p><span>＜全体の解説＞</span></p>
+                      <p>お台場は観光地として有名であり、夜景やデートスポットとしても人気があります!告白にはちょうど良い海岸沿いの砂浜があり、リラックス感とロマンティックな要素を兼ね備えていておすすめです！
+                          <br>一見超高級レストランも雰囲気があり良さそうですが、恋人になるための告白にしては少し仰々しいかも…？
+                      </p>
+                  </div>
+                </div>
+            </div>
+    
+            <div class="quiz-item">
+                <div class="quiz-header">
+                    <span class="question-number">２問目</span>
+                    <button class="quiz-toggle-button">解説を表示 ⬇️</button>
+                </div>
+                <div class="quiz-content">
+                  <div class="great"><span>Great&emsp;:<span class="char-10">「好きです、付き合ってください。」</span></span></div>
+                  <p><span>Good&emsp;:<span class="char-10">「月が綺麗ですね」</span></p>
+                  <p><span>Frog&emsp;:<span class="char-10">「とりま付き合って、だめなら別れよ？」</span></p>
+                  <p><span>Superfrog&emsp;:<span class="char-10">「好き好き好き好き好き好き好き好き好き」</span></p>
+                  <div class="explain">
+                      <p><span>＜全体の解説＞</span></p>
+                      <p>告白のフレーズで大事なことは「ストレートに、真剣に」気持ちを伝えることです。デートを重ねて気持ちを高め合っている状態なら、それだけ十分気持ちは伝わります！
+                      </p>
+                  </div>
+                </div>
+            </div>
+    
+            <div class="quiz-item">
+                <div class="quiz-header">
+                    <span class="question-number">３問目</span>
+                    <button class="quiz-toggle-button">解説を表示 ⬇️</button>
+                </div>
+                <div class="quiz-content">
+                  <div class="great"><span>Great&emsp;:<span class="char-10">デートの最後の方、クライマックスで</span></span></div>
+                  <p><span>Good&emsp;:<span class="char-10">デート途中のお昼に</span></p>
+                  <p><span>Frog&emsp;:<span class="char-10">朝集合したときに</span></p>
+                  <p><span>Superfrog&emsp;:<span class="char-10">集合前にLINEで告白</span></p>
+                  <div class="explain">
+                      <p><span>＜全体の解説＞</span></p>
+                      <p>デート中に感情が高まり、相手との距離感が近くなっていて雰囲気が最も良いのがディナー後のクライマックスです！このタイミングで告白することで成功確率もアップ！
+                          <br>途中での告白は失敗した場合その後が…
+                      </p>
+                  </div>
+                </div>
+            </div>
+
+        <div class="btn">
+            <a href="{% url 'welcome:welcome'%}" style="text-decoration: none;">ホーム画面に戻る</a>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+  <script src="{% static 'javascripts/jquery.min.js' %}"></script>
+  <script src="{% static 'javascripts/result.js' %}"></script>
+{% endblock %}

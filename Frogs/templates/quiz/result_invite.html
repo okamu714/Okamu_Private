@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}<link href="{% static 'css/result.css' %}" rel="stylesheet" >{% endblock %}
+{% block title %}結果発表{% endblock %}
+{% block content %}
+<div class="top">
+  <div class="top-wrapper">
+    <div class="result-container">
+        <div class="result">
+            <h3>結果発表</h3>
+            {%if percent == 1%}
+            <h4 class="char-h4">&emsp;&emsp;&emsp;&emsp;蛙化度:<span class="char-1">&emsp;0&emsp;</span>%</h4>
+            {% else %}
+            <h4 class="char-h4">&emsp;&emsp;&emsp;&emsp;蛙化度:<span class="char-1">&emsp;{{percent}}&emsp;</span>%</h4>
+            {%endif%}
+            {% if percent >= 90  %}
+            <h4>
+              カエルになっちゃう！？
+              <img src="../../static/images/Level3.png">
+            </h4>
+            {% elif percent >= 60 %}
+            <h4>
+              まあまあだね
+              <img src="../../static/images/Level2.png">
+            </h4>
+            {% elif percent >= 40 %}
+            <h4>
+              よくやった
+              <img src="../../static/images/Level1.png">
+            </h4>
+            {% else %}
+            <h4>
+              すばらしい！！
+              <img src="../../static/images/Level0.png">
+            </h4>
+            {% endif %}
+            {% for point in situation1_list %}
+            <div class="card-text">
+              第{{forloop.counter}}問目: {{point}}
+            </div>
+            {%endfor%} 
+        </div>
+        <div class="quiz-container">
+            <h3>解説</h3>
+            <div class="quiz-item">
+                <div class="quiz-header">
+                    <span class="question-number">１問目</span>
+                    <button class="quiz-toggle-button">解説を表示 ⬇️</button>
+                </div>
+                <div class="quiz-content">
+                    <div class="great"><span>Great&emsp;:<span class="char-10">同じ分量を相手の頻度に合わせてLINEする</span></span></div>
+                    <p><span>Good&emsp;:<span class="char-10">常に即レスでLINEする</span></p>
+                    <p><span>Frog&emsp;:<span class="char-10">返信が遅いから追いLINEをする</span></p>
+                    <p><span>Superfrog&emsp;:<span class="char-10">相手に伝えたいことがたくさんあるから長文(相手の３倍)でLINEする</span></p>
+                    <div class="explain">
+                        <p><span>＜全体の解説＞</span></p>
+                        <p>LINEをする上で、相手の会話のテンポに合わせることは重要です。その上で「Great解答」は相手の頻度や文量に応じて返信しているため、相手との会話のリズムを整えるために効果的です。
+                            ぜひ、実践してみてください！
+                            <br>「Good解答」である即レスは常にしていると、相手に対してしつこい印象を与えることがあるので要注意です…
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="quiz-item">
+                <div class="quiz-header">
+                    <span class="question-number">２問目</span>
+                    <button class="quiz-toggle-button">解説を表示 ⬇️</button>
+                </div>
+                <div class="quiz-content">
+                    <div class="great"><span>Great&emsp;:<span class="char-10">今度の日曜日に〇〇（話題のお店）で一緒にランチどう？</span></span></div>
+                    <p><span>Good&emsp;:<span class="char-10">週末は空いてる？良かったらデートしよwwww</span></p>
+                    <p><span>Frog&emsp;:<span class="char-10">〇〇チャン、お早う😃♥ ❗(^^)😚(^o^)🎵😃😘今日は、もう寝ちゃった、の、カナ💤🤑(＃￣З￣)😴🛌😪.......</span></p>
+                    <p><span>Superfrog&emsp;:<span class="char-10">昨日行ったイタリアンのお店、本当に素敵だったんだ！お料理の一皿一皿がまるで芸術作品みたいで.......</span></p>
+                    <div class="explain">
+                        <p><span>＜全体の解説＞</span></p>
+                        <p>LINEでデートに誘うときは、「日時、場所」を指定して提案すると積極性もアピールできて◎！事前に相手の好きな料理ジャンルを知っておけると良いですね。
+                            <br>間違っても絵文字マシマシのおじさん構文で誘ってはいけません！あと、行く前からのネタバレも✕！
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="quiz-item">
+                <div class="quiz-header">
+                    <span class="question-number">３問目</span>
+                    <button class="quiz-toggle-button">解説を表示 ⬇️</button>
+                </div>
+                <div class="quiz-content">
+                    <div class="great"><span>Great&emsp;:<span class="char-11">二人で話し合って決めた場所</span></span></div>
+                    <p><span>Good&emsp;:<span class="char-11">ライブハウスでワイワイガヤガヤ</span></p>
+                    <p><span>Frog&emsp;:<span class="char-11">一蘭で別々に豚骨ラーメン</span></p>
+                    <p><span>Superfrog&emsp;:<span class="char-11">自宅で映画</span></p>
+                    <div class="explain">
+                        <p><span>＜全体の解説＞</span></p>
+                        <p>デートの場所は、相手とのコミュニケーションの中でお互いの興味や好みを考慮したうえで決めましょう。予めおすすめのデートスポットをリサーチしておくのが超重要！
+                            <br>相手に頼り切るのは「信頼」ではなくただの「怠惰」です。
+                            <br>また最初のデートで自宅に誘うのは場合によっては捕まるか炎上します🔥
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn">
+            <a href="{% url 'welcome:welcome'%}" style="text-decoration: none;">ホーム画面に戻る</a>
+        </div>
+    </div>
+  </div> 
+</div>
+{% endblock %}
+{% block script %}
+  <script src="{% static 'javascripts/jquery.min.js' %}"></script>
+  <script src="{% static 'javascripts/result.js' %}"></script>
+{% endblock %}
