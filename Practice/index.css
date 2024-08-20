@@ -1,0 +1,482 @@
+/* 全体 */
+body {
+  margin: 0;
+  font-family: 'sans-serif';
+}
+
+a {
+  color: rgb(63, 159, 63);
+  text-decoration: none;
+}
+
+/* ヘッダー */
+header {
+  height: 45px;
+  width: 100%;
+  border-top: 2px solid #34b792;
+  border-bottom: 2px solid #34b792;
+  background-color: #fffef9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.header-left {
+  float: left;
+  line-height: 45px;
+  font-size: 25px;
+  font-family: '筑紫B丸ゴシック';
+  padding: 0 10px;
+}
+
+.header-right a {
+  float: right;
+  line-height: 35px;
+  margin: 5px 0;
+  padding: 0 25px;
+  display: block;
+  transition: all 0.5s;
+  border-left: 2px dotted #34b792;
+}
+
+/* トップ */
+
+.top-wrap {
+  height: fit-content;
+  width: 100%;
+  padding: 40px 0;
+  background-color: antiquewhite;
+}
+
+.top-contents {
+  text-align: center;
+}
+
+.box {
+  height: 200px;
+  width: 300px;
+  margin: 20px auto;
+  overflow: scroll;
+}
+
+/* 練習問題 */
+.practice {
+  width: 85%;
+  height: fit-content;
+  background-color: white;
+  border: 5px solid black;
+  border-radius: 5px;
+  margin: 10px auto;
+}
+
+.odai {
+  font-size: 26px;
+  border-bottom: 2px solid #34b792;
+  width: fit-content;
+  margin: 15px;
+}
+
+.odai-config p {
+  text-align: left;
+  padding-left: 15px;
+  font-size: 17px;
+}
+
+/* ランダム色生成  */
+.bgColor {
+  width: 80%;
+  margin: 10px auto;
+  height: 100px;
+  background-color: whitesmoke;
+  border: 3px solid black;
+}
+
+.colorCode {
+  width: fit-content;
+  font-size: 20px;
+  margin: 20px auto;
+  border-bottom: 5px dotted black;
+}
+
+.button-bgColor {
+  font-size: 17px;
+  margin-bottom: 20px;
+}
+
+/* カウンター */
+.incBack {
+  width: 80%;
+  margin: 10px auto;
+  height: 100px;
+  background-color: whitesmoke;
+  border: 3px solid black;
+}
+
+#inc {
+  font-size: 40px;
+  line-height: 30px;
+}
+
+.plus,
+.plus-100,
+.plus-1M {
+  font-size: 20px;
+  background-color: rgb(255, 190, 252);
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.plus:hover,
+.plus-100:hover,
+.plus-1M:hover {
+  background-color: rgb(223, 166, 221);
+}
+
+.plus:active,
+.plus-100:active,
+.plus-1M:active {
+  transform: scale(0.8);
+}
+
+.minus,
+.minus-100,
+.minus-1M {
+  font-size: 20px;
+  background-color: #96fcdf;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.minus:hover,
+.minus-100:hover,
+.minus-1M:hover {
+  background-color: #80d5bd;
+}
+
+.minus:active,
+.minus-100:active,
+.minus-1M:active {
+  transform: scale(0.8);
+}
+
+/* サイドバーメニュー */
+.menuBack {
+  width: 80%;
+  margin: 10px auto;
+  height: 200px;
+  background-color: whitesmoke;
+  border: 3px solid black;
+}
+
+.menuHeader {
+  height: 45px;
+  width: 100%;
+  border-top: 2px solid #34b792;
+  border-bottom: 2px solid #34b792;
+  background-color: #fffef9;
+}
+
+.menu-right a {
+  float: right;
+  line-height: 35px;
+  margin: 5px 0;
+  padding: 0 25px;
+  display: block;
+  transition: all 0.5s;
+  border-left: 2px dotted #34b792;
+}
+
+#menu-toggle {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  background-color: #007bff;
+  font-size: 70px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#menu-toggle:active {
+  background-color: #005fc4;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px; /* 初期状態では画面外に隠れている */
+  z-index: 11;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  color: white;
+  transition: left 0.3s ease;
+  padding-top: 60px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 15px;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+  text-decoration: underline;
+}
+
+.sidebar.open {
+  left: 0; /* 開いた状態で画面内に表示 */
+}
+
+/* 文字がその場で強調表示 */
+.inputBack {
+  width: 80%;
+  margin: 10px auto;
+  height: 200px;
+  background-color: white;
+  border: 3px solid black;
+  overflow: scroll;
+}
+
+.input-text {
+  margin-top: 10px;
+  font-size: 30px;
+}
+
+.input {
+  width: 70%;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  padding: 10px;
+  font-size: 18px;
+  outline: 0;
+  border: 5px dotted black;
+  border-radius: 5px;
+}
+
+#input {
+  font-size: 50px;
+  margin-top: 20px;
+  font-family: HiraMinProN-W6;
+}
+
+/* お気に入り画像 */
+.picBack {
+  width: 80%;
+  margin: 10px auto;
+  height: 400px;
+  background-color: white;
+  border: 3px solid black;
+  overflow: scroll;
+}
+
+.allPics {
+  float: left;
+  width: 48%;
+  height: 100%;
+  margin: 5px;
+  border: 2px solid purple;
+  overflow: scroll;
+}
+
+.favPics {
+  float: left;
+  width: 48%;
+  height: 100%;
+  margin: 5px;
+  border: 2px solid pink;
+  overflow: scroll;
+}
+
+.allPic,
+.favPic,
+.pictures {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.picBox,
+.favPicBox,
+.picture {
+  width: 50%;
+  box-sizing: border-box;
+}
+
+#img {
+  border: 1px solid #34b792;
+  width: 80%;
+  height: 150px;
+  margin: 5px;
+}
+
+#favimg {
+  border: 1px solid #34b792;
+  width: 80%;
+  height: 150px;
+  margin: 5px;
+}
+
+.allPicButton {
+  margin-bottom: 20px;
+}
+
+.allPicButton.added {
+  background-color: #28a745;
+}
+
+.divide {
+  float: left;
+  width: 10px;
+  height: 100%;
+  margin: 10px 0;
+  background-color: black;
+}
+
+/* フォーム入力 */
+.formBack {
+  width: 80%;
+  margin: 10px auto;
+  height: 240px;
+  background-color: white;
+  border: 3px solid black;
+}
+
+#myForm {
+  margin-top: 20px;
+}
+
+/* ホバーで変わる画像 */
+.hoverBack {
+  width: 80%;
+  margin: 10px auto;
+  height: 300px;
+  background-color: white;
+  border: 3px solid black;
+  overflow: scroll;
+}
+
+.picHover {
+  border: 1px solid #34b792;
+  width: 80%;
+  height: 250px;
+  margin: 5px;
+}
+
+/* ToDoアプリ */
+.toDoBack {
+  width: 80%;
+  margin: 10px auto;
+  height: 640px;
+  background-color: white;
+  border: 3px solid black;
+  overflow: scroll;
+}
+.toDoList {
+  width: 80%;
+  margin: 10px auto;
+  height: 400px;
+  background-color: white;
+  border: 3px solid black;
+  overflow: scroll;
+}
+.toDoForm {
+  width: 80%;
+  margin: 10px auto;
+  height: 200px;
+  background-color: white;
+  border: 3px solid black;
+  overflow: scroll;
+}
+
+table {
+  border-collapse: collapse; /* セルの線を重ねる */
+  margin: 10px;
+  width: 97%;
+}
+
+th,
+td {
+  padding: 20px;
+  border: 1px solid black;
+}
+
+th {
+  width: 60px;
+}
+
+td {
+  text-align: left;
+  cursor: pointer;
+}
+td button {
+  margin: 0 5px;
+  border-radius: 30px;
+  font-size: 14px;
+  background-color: #80bcff;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  border: 2px solid #80bcff;
+}
+
+.thHead {
+  font-size: 20px;
+  text-align: center;
+  color: white;
+  background-color: rgb(163, 163, 163);
+}
+
+.form-label {
+  font-size: 14px;
+  color: #5f6979;
+  text-align: left;
+  margin-left: 30px;
+}
+
+.item-form-wrapper input[type='text'] {
+  width: 90%;
+  height: 25px;
+  margin: 0px 8px 8px 8px;
+  padding: 12px 16px;
+  background-color: #fcfcfd;
+  border: 1px solid #8ea4bb;
+  border-radius: 2px;
+  color: #2b546a;
+  font-size: 16px;
+}
+
+.item-form-wrapper input[type='submit'] {
+  display: block;
+  width: 120px;
+  height: 45px;
+  margin-top: 24px;
+  margin-left: auto;
+  margin-right: 20px;
+  border-radius: 30px;
+  font-size: 14px;
+  background-color: #80bcff;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  border: 2px solid #80bcff;
+}
+
+.item-form-wrapper input[type='submit']:hover {
+  background-color: #ffffff;
+  color: #80bcff;
+  transition: all 0.3s ease;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}

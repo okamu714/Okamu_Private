@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice</title>
+    <link href="index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <div class="header-inner">
+        <div class="header-left">練習あるのみ！！</div>
+        <div class="header-right">
+          <a href="index.html" style="text-decoration: none">ホーム</a>
+        </div>
+      </div>
+    </header>
+    <div class="top-wrap">
+      <div class="top-container">
+        <div class="top-contents">
+          <div class="greeting">
+            <h1 id="title">こんにちは！</h1>
+            <h2 name="hello">
+              このページは勉強した内容を実践するためのページです<br />
+              実践するお題はAI生成で決めました。
+            </h2>
+          </div>
+          <div class="practices">
+            <div class="practice">
+              <div class="odai">お題①色の変わる背景ページ</div>
+              <div class="odai-config">
+                <p>
+                  概要:&emsp;ページにボタンを配置し、クリックすると背景色がランダムに変わる。<br />
+                  インタラクション:&emsp;①ボタンをクリックするたびに、背景色がランダムに変更される。&emsp;②背景色のコード（例:#FF5733）が表示されるようにする。
+                </p>
+              </div>
+              <div class="bgColor"></div>
+              <div class="colorCode">ここにカラーコードが出るよ</div>
+              <div><button class="button-bgColor">色が変わるよ</button></div>
+            </div>
+            <div class="practice">
+              <div class="odai">お題②インクリメントカウンター</div>
+              <div class="odai-config">
+                <p>
+                  概要:&emsp;ページに数字を表示し、「＋」や「－」のボタンで数字を増減させることができる。<br />
+                  インタラクション:&emsp;①「＋」ボタンでカウンターの数字を1ずつ増加。&emsp;②「－」ボタンでカウンターの数字を1ずつ減少。
+                </p>
+              </div>
+              <div class="incBack"><p id="inc">0</p></div>
+              <div>
+                <button class="minus-1M">ー1M</button>
+                <button class="minus-100">ー100</button>
+                <button class="minus">ー</button>
+                <button class="reset">reset</button>
+                <button class="plus">＋</button>
+                <button class="plus-100">＋100</button>
+                <button class="plus-1M">＋1M</button>
+              </div>
+            </div>
+            <div class="practice">
+              <div class="odai">お題③シンプルなメニューの開閉</div>
+              <div class="odai-config">
+                <p>
+                  概要:&emsp;メニューを表示するボタンをクリックすると、ナビゲーションメニューがスライドして表示・非表示になるページ。<br />
+                  インタラクション:&emsp;①メニューボタンをクリックで、サイドバーがスライドして表示/非表示になる。
+                  &emsp;②表示されたメニューから他のページにリンクする。
+                </p>
+              </div>
+              <div class="menuBack">
+                <button id="menu-toggle">サイドバー表示/非表示!!!</button>
+                <nav id="sidebar" class="sidebar">
+                  <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                  </ul>
+                </nav>
+              </div>
+              <div class="colorCode">↑押してね</div>
+            </div>
+            <div class="practice">
+              <div class="odai">
+                お題④テキストをリアルタイムで表示する入力フィールド
+              </div>
+              <div class="odai-config">
+                <p>
+                  概要:&emsp;ユーザーがテキストフィールドに入力するたびに、その内容がリアルタイムでページに反映される。<br />
+                  インタラクション:&emsp;①入力フィールドに文字を入力すると、入力内容がリアルタイムでページ上に反映される。
+                  &emsp;②入力内容が反映される部分を強調表示する。
+                </p>
+              </div>
+              <div class="inputBack">
+                <p id="input"></p>
+              </div>
+              <div class="input-text">下に文字を入れてみよう!!!</div>
+              <input class="input" type=""></input>
+            </div>
+            <div class="practice">
+              <div class="odai">
+                お題⑤画像をお気に入り登録するやつ
+              </div>
+              <div class="odai-config">
+                <p>
+                  概要:&emsp;画像ギャラリーの各アイテムに「お気に入り」ボタンがあり、クリックするとお気に入りリストに追加される。<br />
+                  インタラクション:&emsp;①各画像の下に「お気に入り」ボタンを配置。
+                  &emsp;②クリックすると画像が「お気に入り」リストに追加され、リストがページ上に表示される。
+                </p>
+              </div>
+              <div class="picBack">
+                <div class="allPics">
+                  <div class='allPic'>
+                    <div class="picBox">
+                      <img src="images/5630.png" id='img' alt="Image 1">
+                      <button class="allPicButton">お気に入り登録</button>
+                    </div>
+                    <div class="picBox">
+                      <img src="images/KKFrog.png" id='img' alt="Image 2">
+                      <button class="allPicButton">お気に入り登録</button>
+                    </div>
+                    <div class="picBox">
+                      <img src="images/kaeruhome.png" id='img' alt="Image 3"> 
+                      <button class="allPicButton">お気に入り登録</button>
+                    </div>
+                    <div class="picBox">
+                      <img src="images/Level2.png" id='img' alt="Image 4">
+                      <button class="allPicButton">お気に入り登録</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="divide"></div>
+                <div class="favPics">
+                  <div class="favPic">
+                  </div>
+                </div>
+              </div>
+              <div class="input-text">お気に入りの画像を登録/登録解除してみよう！</div>
+            </div>
+            <div class="practice">
+              <div class="odai">
+                お題⑤簡単なフォームのバリデーション
+              </div>
+              <div class="odai-config">
+                <p>
+                  概要:&emsp;ユーザーが入力した情報をチェックし、必要なフィールドが正しく入力されていない場合にエラーメッセージを表示する。<br />
+                  インタラクション:&emsp;①ユーザーがフォームを送信するとき、入力内容をチェックし、未入力や誤入力がある場合にエラーメッセージを表示。
+                  &emsp;②フォームが正しく入力されると、成功メッセージを表示。
+                </p>
+              </div>
+              <div class="formBack">
+                <form id="myForm">
+                  <label for="name">Name:</label>
+                  <input type="text" id="name" name="name"><br><br>
+                
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email"><br><br>
+                
+                  <label for="password">Password:</label>
+                  <input type="password" id="password" name="password"><br><br>
+
+                  <button type="button" id="formClear">All Delete</button>
+                  <input type="submit" value="Submit">
+                </form>
+                
+                <p id="message"></p>
+              </div>
+            </div>
+            <div class="practice">
+              <div class="odai">
+                お題⑥ホバーで画像が変わるギャラリー
+              </div>
+              <div class="odai-config">
+                <p>
+                  概要:&emsp;ギャラリーの各画像にマウスをホバーすると、異なる画像に切り替わるページ。<br />
+                  インタラクション:&emsp;①ユーザーが画像にマウスを合わせると、別の画像に切り替わる。
+                  &emsp;②マウスを外すと元の画像に戻る。
+                </p>
+              </div>
+              <div class="hoverBack">
+                <div class="hoverPic">
+                  <div class="pictures">
+                    <div class="picture">
+                      <img class='picHover no1' src="images/Level0.png" data-hover="images/Level1.png">
+                    </div>
+                    <div class="picture">
+                      <img class='picHover no2' src="images/Level2.png" data-hover="images/Level3.png">
+                    </div>
+                  </div>
+                </div>
+                <p>カーソルを画像に合わせると変化するよ</p>
+              </div>
+            </div>
+            <div class="practice">
+              <div class="odai">
+                お題⑦To-Doリストアプリ
+              </div>
+              <div class="odai-config">
+                <p>
+                  概要:&emsp;ユーザーがタスクを追加、削除、完了状態にすることができるアプリ。タスクの追加時にDOMに新しいタスクを追加し、チェックボックスの状態変更や削除ボタンのクリックイベントでタスクを更新。<br />
+                  インタラクション:&emsp;①新しいタスクの追加（入力フォームとボタン）
+                  &emsp;②タスクの削除や完了ステータスの切り替え
+                </p>
+              </div>
+              <div class="toDoBack">
+                <div class="toDoList">
+                  <table>
+                    <tbody>
+                        <tr>
+                            <th class="thHead">ID</th>
+                            <td class="thHead">やることリスト</td>
+                        </tr>
+                         <!-- <tr>
+                            <th>見出し</th>
+                            <td>テキストが入ります</td>
+                        </tr>
+                         <tr>
+                            <th>見出し</th>
+                            <td>テキストが入ります</td>
+                        </tr>
+                        <tr>
+                            <th>見出し</th>
+                            <td>テキストが入ります</td>
+                        </tr>
+                        <tr>
+                            <th>見出し</th>
+                            <td>テキストが入ります</td>
+                        </tr> -->
+                    </tbody>
+                  </table>
+                  
+                </div>
+                <div class="toDoForm">
+                  <div class="item-form-wrapper">
+                    <p class="form-label">やること入力欄</p>
+                    <form id="toDoForm" method="post" class="toDoF">
+                      <input type="text" name="itemName" id="toDoText">
+                      <input type="submit" value="追加する" id="toDoButton">
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
