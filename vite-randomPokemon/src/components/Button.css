@@ -1,22 +1,3 @@
-.App {
-  text-align: center;
-  width: 100%;
-  height: fit-content;
-}
-
-.pokeCardContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  place-items: center;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.pokemon-card img {
-  width: 100px;
-  height: 100px;
-}
-
 .btn {
   width: 180px;
   height: 40px;
