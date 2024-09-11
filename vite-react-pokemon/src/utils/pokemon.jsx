@@ -11,7 +11,18 @@ export const getPokemon = (url) => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
+        resolve(data);
+      });
+  });
+};
+
+export const getPokemonJn = (url) => {
+  return new Promise((resolve, reject) => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
         resolve(data);
       });
   });
