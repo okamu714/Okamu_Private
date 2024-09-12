@@ -2,6 +2,11 @@
   text-align: center;
   width: 100%;
   height: fit-content;
+  p {
+    color: white;
+    font-size: 20px;
+    font-weight: 1000;
+  }
 }
 
 .pokeCardContainer {
