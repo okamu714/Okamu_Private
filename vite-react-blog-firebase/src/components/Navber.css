@@ -1,0 +1,24 @@
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  background-color: rgb(4, 210, 39);
+  border-top: 3px solid green;
+  border-bottom: 4px solid green;
+  gap: 55px;
+  a {
+    text-decoration: none;
+    color: white;
+    text-shadow: 1px 1px 3px #808080;
+    font-size: 20px;
+    font-weight: bold;
+    transition: all 0.3s;
+  }
+  a:hover {
+    color: rgb(208, 208, 208);
+  }
+  svg {
+    margin-right: 5px;
+  }
+}
