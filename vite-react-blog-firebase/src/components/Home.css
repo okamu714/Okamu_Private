@@ -1,0 +1,59 @@
+.homePage {
+  width: 100%;
+  height: calc(100vh-80px);
+  height: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 70px 20px 20px 20px;
+}
+.homePage .postContents {
+  width: 600px;
+  height: auto;
+  max-height: 600px;
+  background-color: rgb(234, 244, 237);
+  box-shadow: 2px 2px 5px #808080;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.postHeader h1 {
+  text-align: center;
+  color: #747474;
+  margin-top: 5px;
+}
+
+.postContents .postTextContainer {
+  height: auto;
+  word-wrap: break-word;
+  max-height: 400px;
+  width: 100%;
+}
+
+.nameAndDeleteButton {
+  display: flex;
+  align-items: center;
+
+  h3 {
+    flex: 90%;
+  }
+
+  button {
+    flex: 10%;
+    background-color: rgb(255, 127, 127);
+    color: #ffffff;
+    /* font-weight: ; */
+    text-shadow: 1px 1px 10px #808080;
+    box-shadow: 1px 1px 3px #808080;
+    padding: 7px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  button:hover {
+    background-color: rgb(231, 108, 108);
+  }
+}

@@ -1,4 +1,8 @@
 nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,6 +11,8 @@ nav {
   border-top: 3px solid green;
   border-bottom: 4px solid green;
   gap: 55px;
+  z-index: 1000;
+  transition: top 0.3s ease-in-out;
   a {
     text-decoration: none;
     color: white;
@@ -21,4 +27,8 @@ nav {
   svg {
     margin-right: 5px;
   }
+}
+
+.hidden {
+  top: -100px; /* ヘッダーを非表示にする（ヘッダーの高さ分） */
 }
