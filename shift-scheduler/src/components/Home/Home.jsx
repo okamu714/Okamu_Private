@@ -4,8 +4,11 @@ import { format, parse, startOfWeek, getDay } from 'date-fns';
 import ja from 'date-fns/locale/ja';
 import { collection, query, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase';
+import Modal from 'react-modal';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+
+Modal.setAppElement('#root');
 
 const locales = {
   ja,
@@ -33,8 +36,20 @@ const localizer = dateFnsLocalizer({
 
 const ShiftCalendar = () => {
   const [events, setEvents] = useState([]);
-  const [openModal, setOpenModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
+
+  // モーダルの開閉状態を管理するステート
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  // モーダルを開く
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  // モーダルを閉じる
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   // スタッフ名と色のマッピング
   const nameColorMap = {
@@ -119,48 +134,84 @@ const ShiftCalendar = () => {
     };
   };
 
-  // const onSelectEvent = (event) => {
-  //   alert(`${event.title}のシフト\n開始: ${event.start}\n終了: ${event.end}`);
-  // };
-
-  const handleSelectDate = (date) => {
-    setSelectedDate(date);
+  const onSelectEvent = (event) => {
+    alert(`${event.title}のシフト\n開始: ${event.start}\n終了: ${event.end}`);
   };
 
-  const filteredEvents = selectedDate
-    ? events.filter(
-        (event) => event.start.toDateString() === selectedDate.toDateString()
-      )
-    : events;
-
   return (
-    <div style={{ height: '80vh', margin: '80px 50px 50px 50px' }}>
-      <Calendar
-        localizer={localizer}
-        culture="ja" // 日本語ロケールを指定
-        events={filteredEvents}
-        startAccessor="start"
-        endAccessor="end"
-        views={['month', 'week', 'day']}
-        defaultView="month"
-        messages={{
-          next: '次',
-          previous: '前',
-          today: '今日',
-          month: '月',
-          week: '週',
-          day: '日',
-          agenda: '予定',
-          date: '日付',
-          time: '時間',
-          event: 'イベント',
+    <>
+      <div style={{ height: '80vh', margin: '80px 50px 50px 50px' }}>
+        <Calendar
+          localizer={localizer}
+          culture="ja" // 日本語ロケールを指定
+          events={filteredEvents}
+          startAccessor="start"
+          endAccessor="end"
+          views={['month', 'week', 'day']}
+          defaultView="month"
+          messages={{
+            next: '次',
+            previous: '前',
+            today: '今日',
+            month: '月',
+            week: '週',
+            day: '日',
+            agenda: '予定',
+            date: '日付',
+            time: '時間',
+            event: 'イベント',
+          }}
+          eventPropGetter={eventStyleGetter}
+          style={{ height: '100%' }}
+          onSelectEvent={openModal}
+        />
+      </div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={{
+          content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+          },
         }}
-        eventPropGetter={eventStyleGetter}
-        style={{ height: '100%' }}
-        selectable
-        onSelectSlot={(slotInfo) => handleSelectDate(slotInfo.start)}
-      />
-    </div>
+        contentLabel="Form Modal"
+      >
+        <h2>フォーム入力</h2>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>
+              名前:
+              <input
+                type="text"
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              メール:
+              <input
+                type="email"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+              />
+            </label>
+          </div>
+          <button type="submit">送信</button>
+        </form>
+        <button onClick={closeModal}>閉じる</button>
+      </Modal>
+    </>
   );
 };
 
