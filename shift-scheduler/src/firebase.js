@@ -1,16 +1,17 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: 'your-api-key',
-  authDomain: 'your-auth-domain',
-  projectId: 'your-project-id',
-  storageBucket: 'your-storage-bucket',
-  messagingSenderId: 'your-messaging-sender-id',
-  appId: 'your-app-id',
+  apiKey: 'AIzaSyDn46Phac3QqKVP0icZAfZUPtmtkKO45Tk',
+  authDomain: 'life-shift.firebaseapp.com',
+  projectId: 'life-shift',
+  storageBucket: 'life-shift.appspot.com',
+  messagingSenderId: '582487592474',
+  appId: '1:582487592474:web:ad8aa6e39e48d72d838ba3',
 };
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
+export const provider = new GoogleAuthProvider();

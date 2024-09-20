@@ -1,0 +1,12 @@
+.ShiftHolidayPage {
+  width: 100%;
+  height: 1000px;
+  margin-top: 80px;
+  h2 {
+    width: 100%;
+    text-align: center;
+  }
+  button {
+    text-align: center;
+  }
+}
