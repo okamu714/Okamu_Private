@@ -17,7 +17,7 @@ function App() {
     <Router>
       <Navber isAuth={isAuth} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home isAuth={isAuth} />} />
         <Route path="/ShiftMake" element={<ShiftMake />} />
         <Route path="/shiftDay" element={<ShiftDay />} />
         <Route path="/shiftTime" element={<ShiftTime />} />

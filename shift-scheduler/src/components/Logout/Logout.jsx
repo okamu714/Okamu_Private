@@ -4,12 +4,13 @@ import { auth, provider } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
 import './Logout.css';
 
-const Logout = ({}) => {
+const Logout = ({ setIsAuth }) => {
   const navigate = useNavigate();
   const logout = () => {
     // ログアウト
     signOut(auth).then(() => {
       localStorage.clear();
+      setIsAuth(false);
       navigate('/login');
     });
   };

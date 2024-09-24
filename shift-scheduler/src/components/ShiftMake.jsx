@@ -11,35 +11,53 @@ import { useNavigate } from 'react-router-dom';
 
 const ShiftMake = () => {
   const navigate = useNavigate();
-  const [name, setName] = useState();
-  const [month, setMonth] = useState(null);
-  const [day, setDay] = useState([]); // 複数の日付を選択する場合は配列
+  const [name, setName] = useState(''); // 名前を空文字で初期化
+  const [month, setMonth] = useState(null); // 月をnullで初期化
+  const [day, setDay] = useState([]); // 複数の日付を選択するための配列
   const [time, setTime] = useState({
     hour: null,
     minute: null,
+    convertedMinute: null,
     workDuration: null,
   });
-  let year = new Date().getFullYear();
 
-  const handleNext = () => {
-    const shiftData = {
-      name,
-      date: `${year}-${month}-${day}`,
-      day,
-      month,
-      time,
-    };
+  const handleNext = async () => {
+    try {
+      // 日付データを作成
+      const dates = {};
+      day.forEach((selectedDay) => {
+        const monthString = selectedDay > 15 ? `${month - 1}` : `${month}`;
+        const formattedDate = `${monthString}/${selectedDay}`; // 日付を月/日形式で作成
 
-    // データをデータベースに保存する関数をここで呼び出す
-    // 例えば、Firebase Firestore に保存する
-    saveShiftData(shiftData);
+        dates[selectedDay] = {
+          date: formattedDate, // 日付データ
+          time: {
+            hour: time.hour,
+            minute: time.minute,
+            convertedMinute: time.convertedMinute,
+            workDuration: time.workDuration,
+          },
+        };
+      });
+
+      const shiftData = {
+        name, // 名前
+        dates, // 整形したdatesオブジェクト
+        month, // 月データ
+        time, //出勤内容
+      };
+
+      // データベースに保存
+      await saveShiftData(shiftData);
+    } catch (error) {
+      console.error('シフトデータの保存中にエラーが発生しました:', error);
+    }
   };
 
-  // データベースに保存する関数（例として）
+  // Firebase Firestoreにデータを保存する関数
   const saveShiftData = async (shiftData) => {
     try {
-      // Firebase Firestore にデータを保存する処理をここに実装
-      // 例:
+      // Firebase Firestoreにデータを保存
       await addDoc(collection(db, 'shifts'), shiftData);
       console.log('シフトデータが保存されました:', shiftData);
       alert('シフトデータが保存されました');

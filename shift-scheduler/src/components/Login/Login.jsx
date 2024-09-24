@@ -4,7 +4,7 @@ import { auth, provider } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
-const Login = ({}) => {
+const Login = ({ setIsAuth }) => {
   const navigate = useNavigate();
 
   provider.setCustomParameters({
@@ -15,6 +15,8 @@ const Login = ({}) => {
     // Googleでログイン
     signInWithPopup(auth, provider).then((result) => {
       localStorage.setItem('isAuth', true);
+      setIsAuth(true);
+
       navigate('/');
     });
   };
