@@ -1,9 +1,9 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
-import { Home } from '@mui/icons-material';
 import NoPages from './pages/NoPages';
 import Report from './pages/Report';
 import AppLayout from './components/layout/AppLayout';
+import Home from './pages/Home';
 
 function App() {
   return (
