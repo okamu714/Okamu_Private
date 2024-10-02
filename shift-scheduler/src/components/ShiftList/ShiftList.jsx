@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { doc, deleteDoc } from 'firebase/firestore';
-import { db } from '../../firebase';
+import { db, auth } from '../../firebase';
 import { Card, CardContent, Typography, Button, Grid } from '@mui/material';
 import EditShiftForm from '../EditShiftForm/EditShiftForm';
 
@@ -9,6 +9,14 @@ const ShiftList = () => {
   const [shiftList, setShiftList] = useState([]);
   const [editingShift, setEditingShift] = useState(null);
   const [loading, setLoading] = useState(true); // ローディング状態の管理
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const fetchShiftData = async () => {
     try {
@@ -123,7 +131,7 @@ const ShiftList = () => {
           container
           spacing={2}
           maxWidth="lg"
-          sx={{ width: '100%', margin: '0 auto' }}
+          sx={{ width: '100%', margin: '0 auto', marginTop: '80px' }}
         >
           {shiftList.map((shift) => (
             <Grid key={shift.id} item xs={6}>
@@ -131,41 +139,53 @@ const ShiftList = () => {
                 key={shift.id}
                 sx={{
                   marginBottom: 2,
-                  marginTop: '80px',
                   border: '1px solid black',
                 }}
               >
                 <CardContent>
-                  <Typography variant="h6">シフトID: {shift.id}</Typography>
-                  <Typography variant="body1">名前: {shift.name}</Typography>
+                  <Typography variant="h6" sx={{ marginBottom: '5px' }}>
+                    シフトID: {shift.id}
+                  </Typography>
+                  <Typography variant="body1" sx={{ marginBottom: '5px' }}>
+                    名前: {shift.name}
+                  </Typography>
                   {/* {/* <Typography variant="body1">月: {shift.date}</Typography> */}
-                  <Typography variant="body1">
-                    {' '}
-                    日付:
+                  <Typography
+                    variant="body1"
+                    sx={{ overflowWrap: 'break-word', marginBottom: '5px' }}
+                  >
+                    出勤日:
+                    <br />
                     {shift.dates.map(([key, value]) => (
                       <span key={key}>{value.date},</span>
                     ))}
                   </Typography>
-                  <Typography variant="body1">
+                  <Typography variant="body1" sx={{ marginBottom: '5px' }}>
                     時間: {shift.time.hour}
                     {shift.time.convertedMinute}
                     {shift.time.workDuration}
                   </Typography>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    sx={{ marginRight: '10px' }}
-                    onClick={() => handleEdit(shift)}
-                  >
-                    編集
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    onClick={() => handleDelete(shift.id)}
-                  >
-                    削除
-                  </Button>
+                  {/* 作成者のUIDと現在のユーザーのUIDを比較 */}
+                  {(shift.createdBy === currentUser?.uid ||
+                    currentUser?.uid === 'ObWUJkMVHBZd4FwutvQRcT8TKFh2') && (
+                    <>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        sx={{ marginRight: '10px' }}
+                        onClick={() => handleEdit(shift)}
+                      >
+                        編集
+                      </Button>
+                      <Button
+                        variant="outlined"
+                        color="secondary"
+                        onClick={() => handleDelete(shift.id)}
+                      >
+                        削除
+                      </Button>
+                    </>
+                  )}
                 </CardContent>
               </Card>
             </Grid>

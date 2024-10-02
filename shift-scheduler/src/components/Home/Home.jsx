@@ -11,7 +11,7 @@ import {
   updateDoc,
   getFirestore,
 } from 'firebase/firestore';
-import { db } from '../../firebase';
+import { db, auth } from '../../firebase';
 import Modal from 'react-modal';
 import {
   Box,
@@ -24,6 +24,7 @@ import {
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import zIndex from '@mui/material/styles/zIndex';
+import ShiftTable from '../ShiftTable';
 
 Modal.setAppElement('#root');
 
@@ -53,6 +54,8 @@ const localizer = dateFnsLocalizer({
 
 const ShiftCalendar = ({ isAuth }) => {
   const navigate = useNavigate();
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
   const [events, setEvents] = useState([]);
   const [selectedDate, setSelectedDate] = useState('');
   const [hour, setHour] = useState('');
@@ -70,7 +73,13 @@ const ShiftCalendar = ({ isAuth }) => {
   );
 
   // モーダルの開閉状態を管理するステート
-  const [modalIsOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
+    });
+    return () => unsubscribe();
+  }, []);
 
   // モーダルを開く
   const openModal = () => {
@@ -130,33 +139,22 @@ const ShiftCalendar = ({ isAuth }) => {
             data.dates[day].time.workDuration
           );
 
-          if (data.dates[day].time.workDuration > 5.5) {
-            const endDate = new Date(
-              startDate.getTime() +
-                (data.dates[day].time.workDuration + 1) * 60 * 60 * 1000
-            );
-            shifts.push({
-              title: data.name,
-              start: startDate,
-              end: endDate,
-              dates: data.dates[day],
-              day: parseInt(day),
-              id: data.id,
-            });
-          } else {
-            const endDate = new Date(
-              startDate.getTime() +
-                data.dates[day].time.workDuration * 60 * 60 * 1000
-            );
-            shifts.push({
-              title: data.name,
-              start: startDate,
-              end: endDate,
-              dates: data.dates[day],
-              day: parseInt(day),
-              id: data.id,
-            });
+          let totalDuration = data.dates[day].time.workDuration;
+          if (totalDuration > 5.5) {
+            totalDuration += 1; // 1時間の休憩を追加
           }
+          const endDate = new Date(
+            startDate.getTime() + totalDuration * 60 * 60 * 1000
+          );
+          shifts.push({
+            title: data.name,
+            start: startDate,
+            end: endDate,
+            dates: data.dates[day],
+            day: parseInt(day),
+            id: doc.id,
+            createdBy: data.createdBy,
+          });
 
           // 同じ開始日時と終了日時を持つイベントが既に存在するか確認
         });
@@ -173,7 +171,7 @@ const ShiftCalendar = ({ isAuth }) => {
   }, []);
 
   useEffect(() => {
-    console.log(selectedDate);
+    // console.log(selectedDate);
     if (selectedDate) {
       setTime({
         hour: selectedDate.dates.time.hour,
@@ -232,23 +230,27 @@ const ShiftCalendar = ({ isAuth }) => {
     setConvertedMinute(newCM);
   }, [minute]);
 
-  useEffect(() => {
-    console.log(convertedMinute);
-  }, [convertedMinute]);
+  // useEffect(() => {
+  //   console.log(convertedMinute);
+  // }, [convertedMinute]);
 
-  useEffect(() => {
-    console.log(selectedDate);
-  }, [selectedDate]);
+  // useEffect(() => {
+  //   console.log(selectedDate);
+  // }, [selectedDate]);
 
   const handleInput = () => {
     updateFireBase();
   };
 
   // useEffect(() => {
-  //   console.log(docRef);
-  // }, [docRef]);
+  //   console.log();
+  // }, [currentUser]);
 
   const updateFireBase = async () => {
+    if (!selectedDate || !selectedDate.id || !selectedDate.day) {
+      alert('選択された日付が無効です。');
+      return;
+    }
     // if (shifts)
     const docRef = doc(db, 'shifts', selectedDate.id);
     // let newDay = selectedDate.day;
@@ -265,12 +267,16 @@ const ShiftCalendar = ({ isAuth }) => {
 
       alert('シフトが更新されました');
       setIsOpen(false);
-      window.location.reload();
+      await fetchShiftData();
     } catch (error) {
       console.error('シフトの更新中にエラーが発生しました: ', error);
       alert(`エラー: ${error.message}`);
     }
   };
+
+  // useEffect(() => {
+  //   console.log(events);
+  // }, [modalIsOpen]);
 
   return (
     <>
@@ -316,6 +322,7 @@ const ShiftCalendar = ({ isAuth }) => {
               {selectedDate ? `${time.workDuration}` : ''}
               です
             </h3>
+
             <Container>
               {/* 各日付ごとにシフトを編集するフォーム */}
 
@@ -363,6 +370,7 @@ const ShiftCalendar = ({ isAuth }) => {
               </Grid>
 
               {/* ボタン */}
+
               <Box
                 sx={{
                   display: 'flex',
@@ -377,44 +385,50 @@ const ShiftCalendar = ({ isAuth }) => {
                 >
                   キャンセル
                 </Button>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleInput}
-                >
-                  変更を保存
-                </Button>
+                {/* 作成者のUIDと現在のユーザーのUIDを比較 */}
+                {(selectedDate.createdBy === currentUser?.uid ||
+                  currentUser?.uid === 'ObWUJkMVHBZd4FwutvQRcT8TKFh2') && (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleInput}
+                  >
+                    変更を保存
+                  </Button>
+                )}
               </Box>
             </Container>
           </Box>
         </Modal>
       ) : isAuth ? (
-        <div style={{ height: '80vh', margin: '80px 50px 50px 50px' }}>
-          <Calendar
-            localizer={localizer}
-            culture="ja" // 日本語ロケールを指定
-            events={events}
-            startAccessor="start"
-            endAccessor="end"
-            views={['month', 'week', 'day']}
-            defaultView="month"
-            messages={{
-              next: '次',
-              previous: '前',
-              today: '今日',
-              month: '月',
-              week: '週',
-              day: '日',
-              agenda: '予定',
-              date: '日付',
-              time: '時間',
-              event: 'イベント',
-            }}
-            eventPropGetter={eventStyleGetter}
-            style={{ height: '100%' }}
-            onSelectEvent={onSelectEvent}
-          />
-        </div>
+        <>
+          <div style={{ height: '80vh', margin: '80px 50px 50px 50px' }}>
+            <Calendar
+              localizer={localizer}
+              culture="ja" // 日本語ロケールを指定
+              events={events}
+              startAccessor="start"
+              endAccessor="end"
+              views={['month', 'week', 'day']}
+              defaultView="month"
+              messages={{
+                next: '次',
+                previous: '前',
+                today: '今日',
+                month: '月',
+                week: '週',
+                day: '日',
+                agenda: '予定',
+                date: '日付',
+                time: '時間',
+                event: 'イベント',
+              }}
+              eventPropGetter={eventStyleGetter}
+              style={{ height: '100%' }}
+              onSelectEvent={onSelectEvent}
+            />
+          </div>
+        </>
       ) : (
         <Container sx={{ textAlign: 'center', marginTop: '80px' }}>
           <div>

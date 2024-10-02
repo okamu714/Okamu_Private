@@ -9,6 +9,7 @@ import ShiftMake from './components/ShiftMake';
 import ShiftList from './components/ShiftList/ShiftList';
 import Login from './components/Login/Login';
 import Logout from './components/Logout/Logout';
+import ShiftTable from './components/ShiftTable';
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem('isAuth'));
@@ -23,6 +24,7 @@ function App() {
         <Route path="/shiftTime" element={<ShiftTime />} />
         <Route path="/shiftMonth" element={<ShiftMonth />} />
         <Route path="/shiftList" element={<ShiftList />} />
+        <Route path="/ShiftTable" element={<ShiftTable/>} />
         <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
         <Route path="/logout" element={<Logout setIsAuth={setIsAuth} />} />
       </Routes>

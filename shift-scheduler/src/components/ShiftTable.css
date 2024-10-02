@@ -1,0 +1,35 @@
+.excel-table-container {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.excel-table {
+  overflow: scroll;
+  border-collapse: collapse;
+  width: 85%;
+  table-layout: fixed;
+}
+
+.excel-table th,
+.excel-table td {
+  border: 1px solid #ccc;
+  padding: 5px;
+  text-align: center;
+  width: 30px;
+}
+
+.excel-table th {
+  font-size: 11px;
+  background-color: #f3f3f3;
+  height: 11px; /* セルの高さ */
+  line-height: 11px; /* テキストの高さ */
+}
+
+.excel-table td {
+  font-size: 10px;
+  background-color: white;
+  height: 8px; /* セルの高さ */
+  line-height: 8px; /* テキストの高さ */
+}

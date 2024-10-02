@@ -54,6 +54,8 @@ function ShiftDay({ setDay }) {
         }}
       >
         出勤する日程を入力してください
+        <br />
+        (存在しない日付を選択しないでください 例：2月31日、9月31日など)
       </Typography>
       {/* 16日〜31日 */}
       <Typography

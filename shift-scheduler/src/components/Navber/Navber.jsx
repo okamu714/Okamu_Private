@@ -19,6 +19,11 @@ const Navber = ({ isAuth }) => {
         </Link>
       ) : (
         <>
+          <Link to="ShiftTable" className="nav-link">
+            <EditCalendarIcon className="nav-icon" />
+            <span className="nav-text">TableCopy</span>
+          </Link>
+
           <Link to="shiftMake" className="nav-link">
             <EditCalendarIcon className="nav-icon" />
             <span className="nav-text">ShiftMake</span>

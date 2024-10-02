@@ -40,11 +40,20 @@ const ShiftMake = () => {
         };
       });
 
+      // **現在のユーザーを取得**
+      const user = auth.currentUser;
+      console.log(user);
+      if (!user) {
+        alert('ユーザーがログインしていません');
+        return;
+      }
+
       const shiftData = {
         name, // 名前
         dates, // 整形したdatesオブジェクト
         month, // 月データ
         time, //出勤内容
+        createdBy: user.uid,
       };
 
       // データベースに保存
