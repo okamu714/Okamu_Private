@@ -1,13 +1,5 @@
-import {
-  Card,
-  CardContent,
-  Grid,
-  Grid2,
-  Stack,
-  Typography,
-} from '@mui/material';
-import Grid2 from '@mui/material/Unstable_Grid2';
-
+import { Card, CardContent, Grid, Stack, Typography } from '@mui/material';
+import { Grid2 } from '@mui/material/Unstable_Grid2';
 import React from 'react';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
