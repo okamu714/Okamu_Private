@@ -1,0 +1,42 @@
+/* aã‚¿ã‚° */
+.fc-h-event {
+  background-color: transparent;
+  border: none;
+  text-align: right;
+  pointer-events: none; /* ãƒã‚¤ãƒ³ã‚¿ãƒ¼ã‚¤ãƒ™ãƒ³ãƒˆã‚’ç„¡è¦–ã™ã‚‹ */
+}
+
+/* ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼ã®èƒŒæ™¯è‰²è¨­å®š */
+.fc-daygrid-body,
+.fc-day {
+  background-color: white; /* èƒŒæ™¯è‰²ã‚’ç™½ã«è¨­å®š */
+}
+
+.fc-col-header-cell {
+  background-color: #42a5f5;
+  color: white; /* ãƒ˜ãƒƒãƒ€ãƒ¼ã®ãƒ†ã‚­ã‚¹ãƒˆè‰²ã‚’ç™½ã«è¨­å®š */
+}
+
+.fc .fc-daygrid-day-frame {
+  height: 100%;
+  min-height: 100px;
+}
+
+/* ã‚«ã‚¹ã‚¿ãƒ ã‚¤ãƒ™ãƒ³ãƒˆã®è¦‹ãŸç›®ã“ã“ã‹ã‚‰ */
+.money {
+  white-space: nowrap; /* ãƒ†ã‚­ã‚¹ãƒˆã‚’æŠ˜ã‚Šè¿”ã•ãªã„ */
+  overflow: hidden; /* ã¯ã¿å‡ºã—ãŸãƒ†ã‚­ã‚¹ãƒˆã‚’éš ã™ */
+  text-overflow: ellipsis; /* ã¯ã¿å‡ºã—ãŸãƒ†ã‚­ã‚¹ãƒˆã®ä»£ã‚ã‚Šã«çœç•¥è¨˜å·ã‚’è¡¨ç¤º */
+}
+
+#event-income {
+  color: #2196f3;
+}
+
+#event-expense {
+  color: #f44336;
+}
+
+#event-balance {
+  color: #4caf50;
+}

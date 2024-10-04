@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 import { Transaction } from './types/index';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from './firebase';
-import { format } from 'date-fns';
+// import { format } from 'date-fns';
 import { formatMonth } from './utils/formatting';
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
   }
 
   const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [currentMonth, setCurrentMont] = useState(new Date());
+  const [currentMonth, setCurrentMonth] = useState(new Date());
   // format(currentMonth, 'yyyy-MM');
 
   useEffect(() => {
@@ -39,7 +39,7 @@ function App() {
           } as Transaction;
         });
 
-        console.log(transactionsData);
+        // console.log(transactionsData);
         setTransactions(transactionsData);
       } catch (err) {
         if (isFireStoreError(err)) {
@@ -58,7 +58,7 @@ function App() {
     return transaction.date.startsWith(formatMonth(currentMonth));
   });
 
-  console.log(monthlyTransactions);
+  // console.log(monthlyTransactions);
 
   return (
     <>
@@ -69,7 +69,12 @@ function App() {
             <Route path="/" element={<AppLayout />}>
               <Route
                 index
-                element={<Home monthlyTransactions={monthlyTransactions} />}
+                element={
+                  <Home
+                    monthlyTransactions={monthlyTransactions}
+                    setCurrentMonth={setCurrentMonth}
+                  />
+                }
               />
               <Route path="/report" element={<Report />} />
               <Route path="*" element={<NoPages />} />
