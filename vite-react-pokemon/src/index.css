@@ -1,0 +1,7 @@
+body {
+  margin: 0;
+  height: fit-content;
+  background-image: radial-gradient(ellipse at top left, #7f50e4, #f62d1b);
+  background-size: cover;
+  padding-bottom: 20px;
+}

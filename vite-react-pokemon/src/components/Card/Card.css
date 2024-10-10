@@ -1,0 +1,41 @@
+.card {
+  width: 290px;
+  height: fit-content;
+  box-shadow: 0px 0px 11px -2px #1f1f1f;
+  border-radius: 85px;
+  background-color: white;
+  padding: 10px 0;
+}
+
+.cardId {
+  font-size: 20px;
+}
+
+.cardImg {
+  transform: scale(2);
+  padding: 20px;
+  margin: 30px;
+}
+
+.cardImg p {
+  transform: scale(0.7);
+}
+
+.cardName {
+  padding: 0;
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.cardInfo {
+  text-align: center;
+}
+
+.typeName {
+  margin-left: 10px;
+}
+
+.title {
+  list-style: none;
+}

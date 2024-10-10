@@ -1,0 +1,13 @@
+nav {
+  background-color: rgb(255, 255, 255);
+  color: rgb(34, 34, 34);
+  border-bottom: 4px solid rgb(34, 34, 34);
+  border-top: 4px solid rgb(34, 34, 34);
+  height: 50px;
+  font-weight: 600;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
