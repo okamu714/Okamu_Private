@@ -9,10 +9,18 @@ import { ThemeProvider } from '@emotion/react';
 import { CssBaseline } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { Transaction } from './types/index';
-import { collection, getDocs } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  updateDoc,
+} from 'firebase/firestore';
 import { db } from './firebase';
 // import { format } from 'date-fns';
 import { formatMonth } from './utils/formatting';
+import { Schema } from './validations/schema';
 
 function App() {
   // Firestoreエラーかどうか判定する型ガード
@@ -24,8 +32,10 @@ function App() {
 
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [currentMonth, setCurrentMonth] = useState(new Date());
+
   // format(currentMonth, 'yyyy-MM');
 
+  // firebaseのデータをすべて取得
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
@@ -54,11 +64,85 @@ function App() {
     fetchTransactions();
   }, []);
 
+  // ひと月分のデータのみ取得
   const monthlyTransactions = transactions.filter((transaction) => {
     return transaction.date.startsWith(formatMonth(currentMonth));
   });
 
+  // 取引を保存する処理
+  const handleSaveTransaction = async (transaction: Schema) => {
+    // firestoreのデータ保存
+
+    try {
+      // Add a new document with a generated id.
+      const docRef = await addDoc(collection(db, 'Transactions'), transaction);
+      console.log('Document written with ID: ', docRef.id);
+
+      const newTransaction = {
+        id: docRef.id,
+        ...transaction,
+      };
+      setTransactions((prevTransaction) => [
+        ...prevTransaction,
+        newTransaction,
+      ]);
+    } catch (err) {
+      if (isFireStoreError(err)) {
+        console.error('firestoreのエラー;', err);
+        // console.error('firebaseのエラーメッセージ;', err.message);
+        // console.error('firebaseのエラーコード;', err.code);
+      } else {
+        console.error('一般的なエラー:', err);
+      }
+    }
+  };
+
+  // 取引を削除する処理
+  const handoleDeleteTransaction = async (transactionId: string) => {
+    // firestoreのデータ削除
+    try {
+      await deleteDoc(doc(db, 'Transactions', transactionId));
+      const filteredTransactions = transactions.filter(
+        (transaction) => transaction.id !== transactionId
+      );
+      setTransactions(filteredTransactions);
+    } catch (err) {
+      if (isFireStoreError(err)) {
+        console.error('firestoreのエラー;', err);
+        // console.error('firebaseのエラーメッセージ;', err.message);
+        // console.error('firebaseのエラーコード;', err.code);
+      } else {
+        console.error('一般的なエラー:', err);
+      }
+    }
+  };
   // console.log(monthlyTransactions);
+
+  // 取引を更新する処理
+  const handleUpdateTransaction = async (
+    transaction: Schema,
+    transactionId: string
+  ) => {
+    // firestoreのデータ更新
+    try {
+      const docRef = doc(db, 'Transactions', transactionId);
+      // Set the "capital" field of the city 'DC'
+      await updateDoc(docRef, transaction);
+      // フロント更新
+      const updatedTransactions = transactions.map((t) =>
+        t.id === transactionId ? { ...t, ...transaction } : t
+      );
+      setTransactions(updatedTransactions);
+    } catch (err) {
+      if (isFireStoreError(err)) {
+        console.error('firestoreのエラー;', err);
+        // console.error('firebaseのエラーメッセージ;', err.message);
+        // console.error('firebaseのエラーコード;', err.code);
+      } else {
+        console.error('一般的なエラー:', err);
+      }
+    }
+  };
 
   return (
     <>
@@ -73,10 +157,16 @@ function App() {
                   <Home
                     monthlyTransactions={monthlyTransactions}
                     setCurrentMonth={setCurrentMonth}
+                    onSaveTransaction={handleSaveTransaction}
+                    onDeleteTransaction={handoleDeleteTransaction}
+                    onUpdateTransaction={handleUpdateTransaction}
                   />
                 }
               />
-              <Route path="/report" element={<Report />} />
+              <Route
+                path="/report"
+                element={<Report currentMonth={currentMonth} />}
+              />
               <Route path="*" element={<NoPages />} />
             </Route>
           </Routes>

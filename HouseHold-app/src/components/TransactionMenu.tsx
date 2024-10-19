@@ -25,12 +25,14 @@ interface TransactionMenuProps {
   dailyTransactions: Transaction[];
   currentDay: string;
   onAddTransactionForm: () => void;
+  onSelectTransaction: (transaction: Transaction) => void;
 }
 
 const TransactionMenu = ({
   dailyTransactions,
   currentDay,
   onAddTransactionForm,
+  onSelectTransaction,
 }: TransactionMenuProps) => {
   const menuDrawerWidth = 320;
   return (
@@ -53,6 +55,7 @@ const TransactionMenu = ({
           日時： {currentDay}
         </Typography>
         <DailySummary dailyTransactions={dailyTransactions} />
+
         {/* 内訳タイトル&内訳追加ボタン */}
         <Box
           sx={{
@@ -76,6 +79,7 @@ const TransactionMenu = ({
             内訳を追加
           </Button>
         </Box>
+
         {/* 取引一覧 */}
         <Box sx={{ flexGrow: 1, overflowY: 'auto' }}>
           <List aria-label="取引履歴">
@@ -90,6 +94,7 @@ const TransactionMenu = ({
                           ? (theme) => theme.palette.incomeColor.light
                           : (theme) => theme.palette.expenseColor.light,
                     }}
+                    onClick={() => onSelectTransaction(transaction)}
                   >
                     <CardActionArea>
                       <CardContent>
@@ -103,7 +108,7 @@ const TransactionMenu = ({
                             {/* icon */}
                             {IconComponents[transaction.category]}
                           </Grid>
-                          <Grid item xs={2.5}>
+                          <Grid item xs={3}>
                             <Typography
                               variant="caption"
                               display="block"
@@ -112,12 +117,12 @@ const TransactionMenu = ({
                               {transaction.category}
                             </Typography>
                           </Grid>
-                          <Grid item xs={4}>
+                          <Grid item xs={4.5}>
                             <Typography variant="body2" gutterBottom>
                               {transaction.content}
                             </Typography>
                           </Grid>
-                          <Grid item xs={4.5}>
+                          <Grid item xs={3.5}>
                             <Typography
                               gutterBottom
                               textAlign={'right'}
