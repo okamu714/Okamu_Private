@@ -6,8 +6,8 @@ export type ExpenseCategory =
   | '住宅費'
   | '交際費'
   | '娯楽'
+  | '自己投資'
   | '電子決済'
-  | 'ポイント使用'
   | '銀行送金';
 
 export interface Transaction {

@@ -23,15 +23,16 @@ import { formatMonth } from './utils/formatting';
 import { Schema } from './validations/schema';
 
 function App() {
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [isLoading, setIsLoading] = useState(true);
+
   // Firestoreエラーかどうか判定する型ガード
   function isFireStoreError(
     err: unknown
   ): err is { code: string; message: string } {
     return typeof err === 'object' && err !== null && 'code' in err;
   }
-
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [currentMonth, setCurrentMonth] = useState(new Date());
 
   // format(currentMonth, 'yyyy-MM');
 
@@ -59,6 +60,8 @@ function App() {
         } else {
           console.error('一般的なエラー:', err);
         }
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchTransactions();
@@ -98,12 +101,21 @@ function App() {
   };
 
   // 取引を削除する処理
-  const handoleDeleteTransaction = async (transactionId: string) => {
+  const handoleDeleteTransaction = async (
+    transactionIds: string | string[]
+  ) => {
     // firestoreのデータ削除
     try {
-      await deleteDoc(doc(db, 'Transactions', transactionId));
+      const idsToDelete = Array.isArray(transactionIds)
+        ? transactionIds
+        : [transactionIds];
+
+      for (const id of idsToDelete) {
+        await deleteDoc(doc(db, 'Transactions', id));
+      }
+
       const filteredTransactions = transactions.filter(
-        (transaction) => transaction.id !== transactionId
+        (transaction) => !idsToDelete.includes(transaction.id)
       );
       setTransactions(filteredTransactions);
     } catch (err) {
@@ -165,7 +177,15 @@ function App() {
               />
               <Route
                 path="/report"
-                element={<Report currentMonth={currentMonth} />}
+                element={
+                  <Report
+                    currentMonth={currentMonth}
+                    setCurrentMonth={setCurrentMonth}
+                    monthlyTransactions={monthlyTransactions}
+                    isLoading={isLoading}
+                    onDeleteTransaction={handoleDeleteTransaction}
+                  />
+                }
               />
               <Route path="*" element={<NoPages />} />
             </Route>
