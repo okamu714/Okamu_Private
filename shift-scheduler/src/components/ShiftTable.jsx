@@ -74,6 +74,42 @@ const ShiftTable = () => {
     setSelectedMonth(event.target.value);
   };
 
+  // 1行だけコピーする関数
+  const handleCopyRow = (row) => {
+    // 行データをタブ区切りで結合
+    const rowData = columns.map((col) => row[col.key]).join('\t');
+
+    // クリップボードに書き込み
+    navigator.clipboard
+      .writeText(rowData)
+      .then(() => {
+        alert('行データがクリップボードにコピーされました');
+      })
+      .catch((error) => {
+        console.error('コピーに失敗しました:', error);
+      });
+  };
+
+  // 全てコピーする関数
+  const handleCopyAll = () => {
+    // 全ての行データをタブ区切りで結合
+    const allData = rows
+      .map((row) => {
+        return columns.map((col) => row[col.key]).join('\t');
+      })
+      .join('\n');
+
+    // クリップボードに書き込み
+    navigator.clipboard
+      .writeText(allData)
+      .then(() => {
+        alert('テーブル全体のデータがクリップボードにコピーされました');
+      })
+      .catch((error) => {
+        console.error('コピーに失敗しました:', error);
+      });
+  };
+
   return (
     <div className="excel-table-container">
       {/* 月の選択 */}
@@ -147,6 +183,9 @@ const ShiftTable = () => {
               ))}
             </tbody>
           </table>
+          <button onClick={handleCopyAll} style={{ marginTop: '10px' }}>
+            全てのデータをコピー
+          </button>
         </div>
       )}
     </div>
