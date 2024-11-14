@@ -1,4 +1,20 @@
 {
   "editor.formatOnSave": true,
-  "typescript.tsserver.useSeparateSyntaxServer": true
+  "typescript.tsserver.useSeparateSyntaxServer": true,
+  "[erb]": {
+    "editor.autoClosingBrackets": "languageDefined",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    }
+  },
+  "beautify.language": {
+    "html": ["erb", "html"],
+    "js": ["javascript", "json"],
+    "css": ["css"]
+  },
+  "files.associations": {
+    "*.erb": "html"
+  }
 }
