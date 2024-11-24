@@ -1,8 +1,5 @@
-# React + Vite
+# シフト作成補助アプリ
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+簡単操作で従業員の一ヶ月分のシフトをエクセルのフォーマット通りに作成します。
+また、時間帯あたりの従業員数が足りていない日を強調表示します。
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
