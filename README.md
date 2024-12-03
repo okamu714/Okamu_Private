@@ -1,20 +1,35 @@
-## Table of Contents
+## 目次
 1. [はじめに](#はじめに)
-2. [Applications](#applications)
-3. [Technologies Used](#technologies-used)
-4. [Setup and Installation](#setup-and-installation)
-5. [Author](#さくしゃ)
+2. [各アプリの概要](#)
+3. [各アプリの機能説明](#technologies-used)
+4. [動作イメージ(主要なもののみ)](#setup-and-installation)
 
-# はじめに
 
-・本リポジトリはこれまでにokamu714(GitHubName)が作成してきたWebアプリケーションの詰め合わせとなっています。<br/>
-・それぞれのアプリケーションは異なる目的や技術スタックを用いて構築されており、このREADMEは各ファイルの概要や動作イメージをまとめたものとなっております。<br/>
+## はじめに
+
+・本リポジトリはこれまでにokamu714(GitHubName)が作成してきたWebアプリケーション(以後Webアプリ)の詰め合わせとなっています。<br/>
+・それぞれのWebアプリは異なる目的や技術スタックを用いて構築されており、このREADMEではその中でも特に注目していただきたいWebアプリを厳選して紹介しております。<br/>
 ・なお、リポジトリにあるコードをご利用いただくことでのトラブル等は一切責任を負いかねます。ご了承ください。
 
-## 概要
--1 A task management application for personal productivity.
-- An e-commerce platform for managing online sales.
-- A real-time chat application with WebSocket integration.
+## 厳選したWebアプリの概要
+### ・Frogs<br/>
+  1. Webアプリ名<br/>
+  - #### 「カエル化回避！」<br/>
+  2. コンセプト / 開発のきっかけ<br/>
+  - 「恋愛に悩むすべての男性へ、少しのアドバイスを」をコンセプトに作成した恋愛シミュレーションクイズゲーム
+  - SNSの普及により恋愛の失敗談が目に止まりやすくなった現代に「カエル化されたらどうしよう」と考えて行動に移す前に諦めてしまう人が一定数存在すると思い、4択クイズでデートの仕方を楽しく学び、自分に自信をもってほしいと考え作成に至った。<br/>
+
+  3. 機能<br/>
+  - 「初めてのデート編」や「3回目のデート編」などシチュエーションを選び、4択の中から自分が正しいと思う行動の選択肢を選んでいくと自分の「カエル化度」を導き出せる。
+  - 各シチュエーションごとの「カエル化度」はマイページから確認できる<br/>
+  4. デモ動画<br/>
+  5. 工夫点 / 挑戦したこと<br/>
+  6. 今後の改善点 / To-Do<br/>
+  7. 使用技術<br/>
+<br/>
+- HouseHold-app<br/>  
+- shift-scheduler<br/>
+- vite-randomPokemon<br/>
 
 
 ## Requirement
