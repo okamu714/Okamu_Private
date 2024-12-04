@@ -6,6 +6,11 @@
     <strong>注意:</strong> リポジトリ内のコードをご利用いただく際に発生したトラブル等については、
     一切責任を負いかねますのでご了承ください。
   </blockquote>
+  <blockquote>
+    <strong>お知らせ:</strong> 電子記事販売や就活体験記ブログを投稿するWebアプリケーションを作成いたしました。こちらも合わせてご覧いただけると幸いです。<br/>
+    アプリURL:https://authcomp.d1awsv4v0mkqab.amplifyapp.com/<br/>
+    Github:https://github.com/okamu714/AnteKnowledgeFrontEnd　(フロントエンド) https://github.com/okamu714/AnteknowledgeBackEnd (バックエンド)
+  </blockquote>
 
   <h2>目次</h2>
   <ol>
@@ -34,7 +39,7 @@
       </ul>
     </li><br/>
     <li><strong>デモ動画:</strong>
-      <a href="https://youtu.be/SGeeLyyds3M"> デモを見る</a>
+      <a href="https://youtu.be/SGeeLyyds3M"> デモを見る(YouTubeへのリンクです)</a>
       <br/>
     </li><br/>
     <li><strong>工夫点 / 挑戦したこと:</strong><br/>
@@ -58,7 +63,7 @@
       </ul>
     </li><br/>
     <li><strong>デモ動画:</strong>
-      <a href="https://example.com/household">デモを見る</a>
+      <a href="https://youtu.be/U_rdJHdrvWw">デモを見る(YouTubeへのリンクです)</a>
       <br/>
     </li><br/>
     <li><strong>工夫点 / 挑戦したこと:</strong><br/>
@@ -68,7 +73,7 @@
         <li>スマホ決済といった現在主流の決済手段を追加</li>
       </ul>
     </li><br/>
-    <li><strong>使用技術:</strong> React, MUI, TypeScript, Firebase(Firestore Firebase)</li>
+    <li><strong>使用技術:</strong> React, MUI, TypeScript, Firebase(Firestore database)</li>
     <li><strong>参考:</strong>
       <br/>【『React』×『TypeScrip』入門　】家計簿アプリ作成でReactとTypeScriptの開発方法を学ぼう 
       <br/>URL:https://www.udemy.com/share/10avSW3@kF65KUoL-L4-vMUdLX71riD2wajEqBL6rCXm-ikb6NrMTJhRrtlzxMAUnA4xqmKYkg==/</li>
@@ -79,33 +84,31 @@
     <li><strong>概要:</strong><br/> 
       <ul>
         <li>シフト作成補助兼管理アプリ。</li>
-        <li>シフト作成の際に、紙の希望出勤表からエクセルに手入力していた作業を、Web上でいくつかの情報を打ち込むことで、シフト表のフォーマット通りにテーブル表示し、最短一回の貼り付け作業で入力を終わらせることができるように</li>
-        </li>
+        <li>シフト作成の際に、紙の希望出勤表からエクセルに手入力していた作業を、Web上でいくつかの情報を打ち込むことで、シフト表のフォーマット通りにテーブル表示し、最短一回の貼り付け作業で入力を終わらせることができるようにした</li>
       </ul>
+    </li><br/>
     <li><strong>機能:</strong>
       <ul>
-        <li>スケジュールの作成・編集。</li>
-        <li>自動スケジュール生成機能。</li>
-        <li>出勤データのエクスポート。</li>
+        <li>一ヶ月分の従業員シフトデータの保存。</li>
+        <li>データをもとにシフト作成に使うエクセルフォーマット通りにテーブルを表示</li>
+        <li>時間帯あたりの出勤人数が足りていない日は赤く強調表示</li>
       </ul>
-    </li>
+    </li><br/>
     <li><strong>デモ動画:</strong>
-      <a href="https://example.com/shift-scheduler">デモを見る</a>
+      <a href="https://youtu.be/aqfUrJ-XeoI">デモを見る(YouTubeへのリンクです)</a>
       <br/>
-      <img src="https://example.com/shift-demo.gif" alt="Shift Scheduler Demo" width="400" />
-    </li>
-    <li><strong>使用技術:</strong> React, Express, PostgreSQL</li>
+    </li><br/>
+    <li><strong>工夫点 / 挑戦したこと:</strong><br/>
+      <ul>
+        <li>変更や取得がしやすいデータ階層構造の設計</li>
+        <li>制作者と管理権限を持ったアカウントしかシフトデータの参照と編集ができない仕様づくり</li>
+        <li>6時間以上の労働時間の場合、休憩時間が加えられていたり、出勤開始時刻を15分起きにしたりといったアルバイト先に合わせた細かい調整</li>
+      </ul>
+    </li><br/>
+    <li><strong>使用技術:</strong> React,  MUI, TypeScript, Firebase(Authentication, Firestore database) </li>
   </ul>
 
-  <h2 id="images">動作イメージ</h2>
-  <p><strong>Frogs - カエル化回避！</strong></p>
-  <img src="https://example.com/frogs-demo.gif" alt="Frogs Demo" width="400" />
-  <p><strong>HouseHold-app</strong></p>
-  <img src="https://example.com/household-demo.gif" alt="HouseHold Demo" width="400" />
-  <p><strong>Shift-scheduler</strong></p>
-  <img src="https://example.com/shift-demo.gif" alt="Shift Scheduler Demo" width="400" />
-
-  <h2 id="technologies">使用技術</h2>
+  <h2 id="technologies">使用技術まとめ</h2>
   <table border="1">
     <thead>
       <tr>
@@ -116,24 +119,24 @@
     <tbody>
       <tr>
         <td>フロントエンド</td>
-        <td>React, TypeScript, Vue.js, TailwindCSS</td>
+        <td>HTML, CSS, JavaScript, TypeScript(5.5.3), React(18.3.1), MUI(6.1.0)</td>
       </tr>
       <tr>
         <td>バックエンド</td>
-        <td>Node.js, Express, Firebase</td>
+        <td>Django(私自身は未使用)</td>
       </tr>
       <tr>
         <td>データベース</td>
-        <td>MongoDB, PostgreSQL</td>
+        <td>Firebase(10.13.1: Authentication, firestore database)</td>
       </tr>
     </tbody>
   </table>
 
   <h2 id="improvements">今後の改善点</h2>
   <ul>
-    <li><strong>Frogs:</strong> ユーザーの選択履歴を元にした詳細なフィードバック機能を追加予定。</li>
-    <li><strong>HouseHold-app:</strong> 複数アカウント対応機能を実装。</li>
-    <li><strong>Shift-scheduler:</strong> スケジュール通知機能の追加。</li>
+    <li><strong>Frogs:</strong> ユーザーのカエル化体験の投稿機能の追加。</li>
+    <li><strong>HouseHold-app:</strong> ユーザー認証機能の追加</li>
+    <li><strong>Shift-scheduler:</strong> テーブル画面からのデータ編集機能追加。</li>
   </ul>
 </body>
 </html>
