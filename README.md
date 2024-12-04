@@ -130,13 +130,20 @@
         <td>Firebase(10.13.1: Authentication, firestore database)</td>
       </tr>
     </tbody>
-  </table>
+  </table><br/>
 
   <h2 id="improvements">今後の改善点</h2>
   <ul>
     <li><strong>Frogs:</strong> ユーザーのカエル化体験の投稿機能の追加。</li>
     <li><strong>HouseHold-app:</strong> ユーザー認証機能の追加</li>
     <li><strong>Shift-scheduler:</strong> テーブル画面からのデータ編集機能追加。</li>
-  </ul>
+  </ul><br/>
+
+  <h2 id="improvements">さいごに</h2>
+  最後までご覧いただきありがとうございました。<br/>
+  どのアプリもデプロイまでには至っていない拙い作品ばかりですが、振り返ってみると意外と思い出深かったりします。<br/>
+  このアプリたちを糧にして、今後も成長を続けていければ良いなと考えております。<br/>
+  改めてここまでご覧いただきありがとうございました！
+  
 </body>
 </html>
