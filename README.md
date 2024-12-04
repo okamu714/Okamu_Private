@@ -63,17 +63,25 @@
     </li><br/>
     <li><strong>工夫点 / 挑戦したこと:</strong><br/>
       <ul>
-        <li>初めてのチーム開発でGitとGitHubの使用に挑戦</li>
-        <li>Djangoで用意したデータベースとの連携に挑戦</li>
-        <li>細かいアニメーションを入れたり、上品さを感じるトップ画像をAIで生成することでUI/UXの向上を図った</li>
+        <li>firebaseを用いたデータベース連携に挑戦</li>
+        <li>MUIを用いてシンプルで見やすいデザインに</li>
+        <li>スマホ決済といった現在主流の決済手段を追加</li>
       </ul>
     </li><br/>
     <li><strong>使用技術:</strong> React, MUI, TypeScript, Firebase(Firestore Firebase)</li>
+    <li><strong>参考:</strong>
+      <br/>【『React』×『TypeScrip』入門　】家計簿アプリ作成でReactとTypeScriptの開発方法を学ぼう 
+      <br/>URL:https://www.udemy.com/share/10avSW3@kF65KUoL-L4-vMUdLX71riD2wajEqBL6rCXm-ikb6NrMTJhRrtlzxMAUnA4xqmKYkg==/</li>
   </ul><br/>
 
   <h3>3. Shift-scheduler</h3>
   <ul>
-    <li><strong>概要:</strong> シフト管理アプリ。従業員の勤務スケジュールを効率的に管理。</li>
+    <li><strong>概要:</strong><br/> 
+      <ul>
+        <li>シフト作成補助兼管理アプリ。</li>
+        <li>シフト作成の際に、紙の希望出勤表からエクセルに手入力していた作業を、Web上でいくつかの情報を打ち込むことで、シフト表のフォーマット通りにテーブル表示し、最短一回の貼り付け作業で入力を終わらせることができるように</li>
+        </li>
+      </ul>
     <li><strong>機能:</strong>
       <ul>
         <li>スケジュールの作成・編集。</li>
